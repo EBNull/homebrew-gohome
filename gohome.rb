@@ -5,21 +5,21 @@
 class Gohome < Formula
   desc "go/links daemon for your local machine"
   homepage "https://github.com/EBNull/gohome"
-  version "0.0.5"
+  version "0.0.6"
   license "MIT"
 
   on_macos do
     on_intel do
-      url "https://github.com/EBNull/gohome/releases/download/v0.0.5/gohome_Darwin_x86_64.tar.gz"
-      sha256 "040f13346cb9e33ae9def4bfc37b088e2f93094a8e9102c083dec88be32b1f71"
+      url "https://github.com/EBNull/gohome/releases/download/v0.0.6/gohome_Darwin_x86_64.tar.gz"
+      sha256 "43991921a36379cb13165d6c5746edd8472ff1e9d68775bb17cc2b8c1a6b4e34"
 
       def install
         bin.install "gohome"
       end
     end
     on_arm do
-      url "https://github.com/EBNull/gohome/releases/download/v0.0.5/gohome_Darwin_arm64.tar.gz"
-      sha256 "c6d07762da441d6b86b43ebfb1ee7e62e9ef1fff36081a62146666d00c97422c"
+      url "https://github.com/EBNull/gohome/releases/download/v0.0.6/gohome_Darwin_arm64.tar.gz"
+      sha256 "4082cf3a12564cf2fcb7f3695533d99bc518fd44d7309cae7f8c6a70f80c364e"
 
       def install
         bin.install "gohome"
@@ -30,8 +30,8 @@ class Gohome < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/EBNull/gohome/releases/download/v0.0.5/gohome_Linux_x86_64.tar.gz"
-        sha256 "7d3aeca50576e06a412d9dbfaa79a839fe87891106ff1de5e8a1a120d88183a0"
+        url "https://github.com/EBNull/gohome/releases/download/v0.0.6/gohome_Linux_x86_64.tar.gz"
+        sha256 "925b34b3eb4473d1b853a3296597fec26a70fd77e8e40f9278f4f8c6ff9f3c5d"
 
         def install
           bin.install "gohome"
@@ -40,8 +40,8 @@ class Gohome < Formula
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/EBNull/gohome/releases/download/v0.0.5/gohome_Linux_arm64.tar.gz"
-        sha256 "a3166afb34509ceac4274398027f649e8640aef5d7fed6d8432318f93d4a9ea4"
+        url "https://github.com/EBNull/gohome/releases/download/v0.0.6/gohome_Linux_arm64.tar.gz"
+        sha256 "bfda1294bde9796d39e9a31faec3102643609156cc64426cba177180256e7449"
 
         def install
           bin.install "gohome"
