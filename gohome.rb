@@ -5,21 +5,21 @@
 class Gohome < Formula
   desc "go/links daemon for your local machine"
   homepage "https://github.com/EBNull/gohome"
-  version "0.0.7"
+  version "0.0.8"
   license "MIT"
 
   on_macos do
     on_intel do
-      url "https://github.com/EBNull/gohome/releases/download/v0.0.7/gohome_Darwin_x86_64.tar.gz"
-      sha256 "b8894b10fdabe34419b138537b05860fb95eab4f120cdd296f6a10d0a16c2996"
+      url "https://github.com/EBNull/gohome/releases/download/v0.0.8/gohome_Darwin_x86_64.tar.gz"
+      sha256 "98066f4df54fabbe1b96a96e620af446585339f212d05b5add05f77435ee4058"
 
       def install
         bin.install "gohome"
       end
     end
     on_arm do
-      url "https://github.com/EBNull/gohome/releases/download/v0.0.7/gohome_Darwin_arm64.tar.gz"
-      sha256 "9a2287b4b34e570193d62ca747790e5074bc8579a0fdb029f0dd45c8311e3040"
+      url "https://github.com/EBNull/gohome/releases/download/v0.0.8/gohome_Darwin_arm64.tar.gz"
+      sha256 "fa4d8d4c9c9f7dbf745b63174ec8c76a0b5411b550557e18b438c06df7c8faaa"
 
       def install
         bin.install "gohome"
@@ -30,8 +30,8 @@ class Gohome < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/EBNull/gohome/releases/download/v0.0.7/gohome_Linux_x86_64.tar.gz"
-        sha256 "00b7867551bdb7e30b70b96d1023b1293ef80083ef6fb32dfbadc73e7a47517b"
+        url "https://github.com/EBNull/gohome/releases/download/v0.0.8/gohome_Linux_x86_64.tar.gz"
+        sha256 "459510fc17e8e5a406c2a046bf12df9fe11307803b82131b1b9a525764ec176d"
 
         def install
           bin.install "gohome"
@@ -40,8 +40,8 @@ class Gohome < Formula
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/EBNull/gohome/releases/download/v0.0.7/gohome_Linux_arm64.tar.gz"
-        sha256 "1452d4767f14604a999fe6d220cc8f414f629d7cbe5f333dd381abad0095b364"
+        url "https://github.com/EBNull/gohome/releases/download/v0.0.8/gohome_Linux_arm64.tar.gz"
+        sha256 "b4998a64ec7c84fb244737873cd7bce6a5029b471477a08fa235dc80ab9df6e3"
 
         def install
           bin.install "gohome"
@@ -63,7 +63,7 @@ class Gohome < Formula
     keep_alive true
     working_dir HOMEBREW_PREFIX
     log_path HOMEBREW_PREFIX/"var/gohome-stdout.txt"
-    log_error_path HOMEBREW_PREFIX/"var/gohome-stderr.txt"
+    error_log_path HOMEBREW_PREFIX/"var/gohome-stderr.txt"
   end
 
   test do
