@@ -5,21 +5,21 @@
 class Gohome < Formula
   desc "go/links daemon for your local machine"
   homepage "https://github.com/EBNull/gohome"
-  version "0.0.6"
+  version "0.0.7"
   license "MIT"
 
   on_macos do
     on_intel do
-      url "https://github.com/EBNull/gohome/releases/download/v0.0.6/gohome_Darwin_x86_64.tar.gz"
-      sha256 "43991921a36379cb13165d6c5746edd8472ff1e9d68775bb17cc2b8c1a6b4e34"
+      url "https://github.com/EBNull/gohome/releases/download/v0.0.7/gohome_Darwin_x86_64.tar.gz"
+      sha256 "b8894b10fdabe34419b138537b05860fb95eab4f120cdd296f6a10d0a16c2996"
 
       def install
         bin.install "gohome"
       end
     end
     on_arm do
-      url "https://github.com/EBNull/gohome/releases/download/v0.0.6/gohome_Darwin_arm64.tar.gz"
-      sha256 "4082cf3a12564cf2fcb7f3695533d99bc518fd44d7309cae7f8c6a70f80c364e"
+      url "https://github.com/EBNull/gohome/releases/download/v0.0.7/gohome_Darwin_arm64.tar.gz"
+      sha256 "9a2287b4b34e570193d62ca747790e5074bc8579a0fdb029f0dd45c8311e3040"
 
       def install
         bin.install "gohome"
@@ -30,8 +30,8 @@ class Gohome < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/EBNull/gohome/releases/download/v0.0.6/gohome_Linux_x86_64.tar.gz"
-        sha256 "925b34b3eb4473d1b853a3296597fec26a70fd77e8e40f9278f4f8c6ff9f3c5d"
+        url "https://github.com/EBNull/gohome/releases/download/v0.0.7/gohome_Linux_x86_64.tar.gz"
+        sha256 "00b7867551bdb7e30b70b96d1023b1293ef80083ef6fb32dfbadc73e7a47517b"
 
         def install
           bin.install "gohome"
@@ -40,8 +40,8 @@ class Gohome < Formula
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://github.com/EBNull/gohome/releases/download/v0.0.6/gohome_Linux_arm64.tar.gz"
-        sha256 "bfda1294bde9796d39e9a31faec3102643609156cc64426cba177180256e7449"
+        url "https://github.com/EBNull/gohome/releases/download/v0.0.7/gohome_Linux_arm64.tar.gz"
+        sha256 "1452d4767f14604a999fe6d220cc8f414f629d7cbe5f333dd381abad0095b364"
 
         def install
           bin.install "gohome"
@@ -50,10 +50,20 @@ class Gohome < Formula
     end
   end
 
+  def caveats
+    <<~EOS
+      To write a default configuration file for the service, run:
+      gohome --config /opt/homebrew/etc/gohome.flags --write-config
+    EOS
+  end
+
   service do
-    run [opt_bin/"gohome"]
+    run [opt_bin/"gohome", "--config", HOMEBREW_PREFIX/"etc/gohome.flags", "--cache", HOMEBREW_PREFIX/"var/cache/golink_cache.json"]
     require_root true
+    keep_alive true
     working_dir HOMEBREW_PREFIX
+    log_path HOMEBREW_PREFIX/"var/gohome-stdout.txt"
+    log_error_path HOMEBREW_PREFIX/"var/gohome-stderr.txt"
   end
 
   test do
